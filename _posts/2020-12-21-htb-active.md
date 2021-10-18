@@ -1,6 +1,6 @@
 ---
 title: HackTheBox - Active
-date: 2021-09-08 00:00:00 +0100
+date: 2020-12-21 00:00:00 +0100
 categories: [Hackthebox walkthroughs, Windows, Easy]
 tags: [Active Directory, rpcclient, ldapsearch, SMB, smbclient, Groups.xml, GPP, Group Policy Preferences, gpp-decrypt, kerbrute, Kerberos, Kerberoasting, impacket, GetUserSPNs.py, psexec.py, htb-windows-easy, writeup, oscp-prep]
 image: /assets/img/htb/machines/windows/easy/active/Active2.png
