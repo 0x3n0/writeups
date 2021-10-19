@@ -13,7 +13,7 @@ image: /assets/img/ctf/dfir/cybercrime-logo.png
 <br>
 We were given a RAM Acquisition of the suspect disk for week 2. 
 <br>
-![week2](/assets/img/ctf/dfir/week2/week2 data.png)
+![week2](/assets/img/ctf/dfir/week2/week2data.png)
 <br>
 A RAM Acquisition is just a procedure of copying the contents of volatile memory to non-volatile storage.
 <br>
@@ -36,7 +36,7 @@ We again were given 11 challenge questions to do.
 
 ### 1) Be Brave
 
-![week2](/assets/img/ctf/dfir/week2/week2_Be Brave.png)
+![week2](/assets/img/ctf/dfir/week2/week2_BeBrave.png)
 <br>
 
 This one was straight foward. In Volatility we have the plugin called <b>windows.pslist</b> which lists all the processes.
@@ -45,12 +45,12 @@ This one was straight foward. In Volatility we have the plugin called <b>windows
 python3 vol.py -f ../20210430-Win10Home-20H2-64bit-memdump.mem windows.pslist
 ```
 
-![week2](/assets/img/ctf/dfir/week2/1.1 brave.png)
+![week2](/assets/img/ctf/dfir/week2/1.1brave.png)
 
 
 ### 2) Image Verification
 
-![week2](/assets/img/ctf/dfir/week2/week2_Image Verification.png)
+![week2](/assets/img/ctf/dfir/week2/week2_ImageVerification.png)
 <br>
 
 We can run the following command to get the SHA256 hash value.
@@ -62,7 +62,7 @@ CertUtil -hashfile ../20210430-Win10Home-20H2-64bit-memdump.mem sha256
 
 ### 3) Let's Connect
 
-![week2](/assets/img/ctf/dfir/week2/week2_Let's Connect.png)
+![week2](/assets/img/ctf/dfir/week2/week2_Let'sConnect.png)
 <br>
 
 With this one we can use another plugin for Volatility called <b>windows.netstat</b>
@@ -71,7 +71,7 @@ With this one we can use another plugin for Volatility called <b>windows.netstat
 python3 vol.py -f ../20210430-Win10Home-20H2-64bit-memdump.mem windows.netstat | findstr ESTABLISHED
 ```
 
-![week2](/assets/img/ctf/dfir/week2/3.1 Established wrong.png)
+![week2](/assets/img/ctf/dfir/week2/3.1Establishedwrong.png)
 
 I counted.
 <br>
@@ -89,7 +89,7 @@ Was I doing something wrong?
 After while I decided to copy the memory dump to my Kali machine and see if I get the same result.
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/3.2 Kali right.png)
+![week2](/assets/img/ctf/dfir/week2/3.2Kaliright.png)
 <br>
 
 Wait what? A different outcome? 
@@ -106,7 +106,7 @@ I just couldn't trust Volatility on windows.
 
 ### 4) RAM Acquisition Time
 
-![week2](/assets/img/ctf/dfir/week2/week2_RAM Acquisition Time.png)
+![week2](/assets/img/ctf/dfir/week2/week2_RAMAcquisitionTime.png)
 <br>
 
 This one was fairly easy and we just had to run the following Volatility plugin.
@@ -115,18 +115,18 @@ This one was fairly easy and we just had to run the following Volatility plugin.
 python3 vol.py -f ../20210430-Win10Home-20H2-64bit-memdump.mem windows.info
 ```
 
-![week2](/assets/img/ctf/dfir/week2/4.1 time aquired.png)
+![week2](/assets/img/ctf/dfir/week2/4.1timeaquired.png)
 
 ### 5) Chrome Connection
 
-![week2](/assets/img/ctf/dfir/week2/week2_Chrome Connection.png)
+![week2](/assets/img/ctf/dfir/week2/week2_ChromeConnection.png)
 
 This one is pretty straight forward. 
 <br>
 From previous question we see a list of established connections and one of them is <b>chrome.exe</b>
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/5.1 chrome established.png)
+![week2](/assets/img/ctf/dfir/week2/5.1chromeestablished.png)
 <br>
 
 We see that it is connected to a destination IP. We now need to find the domain name.
@@ -134,11 +134,11 @@ We see that it is connected to a destination IP. We now need to find the domain 
 Let us do a reverse lookup on the destination IP.
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/5.2 reverse lookup.png)
+![week2](/assets/img/ctf/dfir/week2/5.2reverselookup.png)
 
 ### 6) Hash Hash Baby
 
-![week2](/assets/img/ctf/dfir/week2/week2_Hash Hash Baby.png)
+![week2](/assets/img/ctf/dfir/week2/week2_HashHashBaby.png)
 <br>
 
 Here we have to dump the process <b>PID 6988</b> with a plugin called pslist.
@@ -155,7 +155,7 @@ md5sum pid.6988.0x1c0000.dmp
 
 ### 7) Offset Select
 
-![week2](/assets/img/ctf/dfir/week2/week2_Offset Select.png)
+![week2](/assets/img/ctf/dfir/week2/week2_OffsetSelect.png)
 <br>
 
 This one had me stumped for pretty much a few hours. 
@@ -171,7 +171,7 @@ The original offset was wrong.
 <br>
 This was the original question. The offset here was <b>0x45BE87B</b>
 <br>
-![week2](/assets/img/ctf/dfir/week2/7.1 wrong offset.png)
+![week2](/assets/img/ctf/dfir/week2/7.1wrongoffset.png)
 <br>
 
 Now when I used that offset
@@ -183,7 +183,7 @@ hexdump -s 0x45BE87B -C ../20210430-Win10Home-20H2-64bit-memdump.mem | more
 I would get the following result.
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/7.2 wrong answer.png)
+![week2](/assets/img/ctf/dfir/week2/7.2wronganswer.png)
 <br>
 
 There was no word with a length of 6 bytes on that offset and the only one that was closest was at offset <b>0x45be93b</b> with the word  <b>removed</b>.
@@ -200,12 +200,12 @@ Thanks [DFIRScience](https://twitter.com/DFIRScience) for thinking I was going i
 hexdump -s 0x45BE876 -C ../20210430-Win10Home-20H2-64bit-memdump.mem | more
 ```
 
-![week2](/assets/img/ctf/dfir/week2/7.3 right offset.png)
+![week2](/assets/img/ctf/dfir/week2/7.3rightoffset.png)
 
 
 ### 8) Process Parents Please
 
-![week2](/assets/img/ctf/dfir/week2/week2_Process Parents Please.png)
+![week2](/assets/img/ctf/dfir/week2/week2_ProcessParentsPlease.png)
 <br>
 
 For this one we will just use <b>windows.pslist</b>
@@ -214,7 +214,7 @@ For this one we will just use <b>windows.pslist</b>
 python3 vol.py -f ../20210430-Win10Home-20H2-64bit-memdump.mem windows.pslist
 ```
 
-![week2](/assets/img/ctf/dfir/week2/8.1 powershell ppid.png)
+![week2](/assets/img/ctf/dfir/week2/8.1powershellppid.png)
 <br>
 
 We have a look at the process <b>powershell.exe</b> and see it has a <b>PPID</b> of <b>4352</b>.
@@ -227,14 +227,14 @@ A PPID is a Parent Process ID. Each process is assigned a PPID and this tells us
 We now have to find this <b>PPID 4352</b> and this will tell us the parent process of <b>powershell.exe</b>
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/8.2 ppid time.png)
+![week2](/assets/img/ctf/dfir/week2/8.2ppidtime.png)
 <br>
 
 Now we have the time the parent process was created.
 
 ### 9 Finding Filenames
 
-![week2](/assets/img/ctf/dfir/week2/week2_Finding Filenames.png)
+![week2](/assets/img/ctf/dfir/week2/week2_FindingFilenames.png)
 <br>
 
 For this one we are going to use the <b>windows.cmdline</b> plugin.
@@ -243,11 +243,11 @@ For this one we are going to use the <b>windows.cmdline</b> plugin.
 python3 vol.py -f ../20210430-Win10Home-20H2-64bit-memdump.mem windows.cmdline | grep notepad
 ```
 
-![week2](/assets/img/ctf/dfir/week2/9.1 file found.png)
+![week2](/assets/img/ctf/dfir/week2/9.1filefound.png)
 
 ### 10) Hocus Focus
 
-![week2](/assets/img/ctf/dfir/week2/week2_Hocus Focus.png)
+![week2](/assets/img/ctf/dfir/week2/week2_HocusFocus.png)
 <br>
 
 This one we use the plugin <b>windows.registry.userassist</b> 
@@ -257,7 +257,7 @@ This one we use the plugin <b>windows.registry.userassist</b>
 python3 vol.py -f ../20210430-Win10Home-20H2-64bit-memdump.mem windows.registry.userassist | grep Brave
 ```
 
-![week2](/assets/img/ctf/dfir/week2/10.1 brave time.png)
+![week2](/assets/img/ctf/dfir/week2/10.1bravetime.png)
 
 
 ### 11) Meetings
@@ -288,7 +288,7 @@ With the hint from the week I knew exactly where to look.
 On the left we click <b>Metadata</b> then we right click <b>almanac-start-a-garden.pdf</b> and extract it to our local machine.
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/11.1 pdf extract.png)
+![week2](/assets/img/ctf/dfir/week2/11.1pdfextract.png)
 <br>
 
 Open the PDF and scroll to page 11.
@@ -296,7 +296,7 @@ Open the PDF and scroll to page 11.
 You will find some GPS coordanates with the date <b>2021-06-13</b> at the bottom of that page.
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/11.2 gps cords.png)
+![week2](/assets/img/ctf/dfir/week2/11.2gpscords.png)
 <br>
 
 Let's go to the website we went to in week 1 https://www.gps-coordinates.net/
@@ -305,7 +305,7 @@ Let's go to the website we went to in week 1 https://www.gps-coordinates.net/
 We enter the GPS co-ordinates and then we find the place and country.
 <br>
 
-![week2](/assets/img/ctf/dfir/week2/11.3 location.png)
+![week2](/assets/img/ctf/dfir/week2/11.3location.png)
 <br>
 I have never been to Victoria Falls.
 
