@@ -82,7 +82,7 @@ Enter the <b>packet ID</b> into the field and click <b>Go to packet</b> and we w
 
 ### 4) Passwords!
 
-![week3](/assets/img/ctf/dfir/week3/week3_Passwords!.png)
+![week3](/assets/img/ctf/dfir/week3/week3_Passwords.png)
 
 In the search bar, search for <b>ftp</b> and on the rightmost column we can find the password.
 
