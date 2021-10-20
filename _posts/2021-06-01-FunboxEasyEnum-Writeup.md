@@ -62,13 +62,13 @@ Nmap done: 1 IP address (1 host up) scanned in 15.17 seconds
 
 With only ports 22 and 80 open we fire up Feroxbuster and find the following:
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Feroxbuster mini php.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/Feroxbusterminiphp.png)
 
 We found http://192.168.145.132/mini.php
 <br>
 Browsing to it and I see you can upload files.
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Mini Shell PHP.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/MiniShellPHP.png)
 
 ## Foothold
 
@@ -93,23 +93,23 @@ listening on [any] 9998 ...
 ```
 We then browse back to http://192.168.245.132/mini.php and upload the shell.php
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Shell upload.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/Shell upload.png)
 
 Once uploaded, it showed up in the list.
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Shell filed uploaded.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/Shell filed uploaded.png)
 
 We now have to change the permissions to execute otherwise the webserver will not be able to execute the php file to run our reverse shell. We changed the permissions to 0777. Drastic I know.
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Shell file permissions.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/Shellfilepermissions.png)
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Shell file permissions change.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/Shellfilepermissionschange.png)
 
 Once done, browse to http://192.168.245.132/shell.php
 <br>
 We then received the shell in our netcat listener window.
 
-![Desktop View](/assets/img/pg/funboxeasyenum/Reverse Shell.png){: .shadow}
+![Desktop View](/assets/img/pg/funboxeasyenum/ReverseShell.png)
 
 ## local flag
 
@@ -123,7 +123,7 @@ www-data@funbox7:/$
 We browse to the www-data home directory and see the following.
 
 
-![View-Desktop](/assets/img/pg/funboxeasyenum/First flag.png){: .shadow}
+![View-Desktop](/assets/img/pg/funboxeasyenum/Firstflag.png)
 
 The proof.txt file! Easy win without having to enumerate anywhere else on the machine.
 
@@ -133,20 +133,20 @@ Unfortunately we are only www-data and still need to get to root.
 
 Let us see what users are on the machine.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Passwd file.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/Passwdfile.png)
 
 We find a hash for the oracle user.
 <br>
 Let's identify the type of hash.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Identify Hash.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/IdentifyHash.png)
 
 <br>
 Let us check [hashcat examples](https://www.google.com/search?client=firefox-b-d&q=hashcat+examples) to verify.
 <br>
 As we can see it's a md5Crypt hash.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/hashcat examples.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/hashcatexamples.png)
 
 Let's crack it.
 
@@ -154,7 +154,7 @@ Let's crack it.
 hashcat -m 500 oracle.hash /usr/share/seclists/Passwords/Leaked-Databases/rockyou.txt
 ```
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/hashcat cracked.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/hashcatcracked.png)
 
 Hash cracked.
 <br>
@@ -162,19 +162,19 @@ We try to ssh as the oracle user but this didn't work but doing a su to the user
 <br>
 We upload LinPEAS.sh to find anything useful.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/linpeas upload.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/linpeasupload.png)
 
 LinPEAS didn't give much but we did find the following users and only the user karla was interesting as this user seems to have much more access on the system than the others.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Users on box.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/Usersonbox.png)
 
 Further enumeration was needed. I remembered seeing phpMyAdmin from Feroxbuster. I searched for phpMyAdmin config file and found the following.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/phpmyadmin config.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/phpmyadminconfig.png)
 
 Could this password be reused for karla? One way to try.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Karla SSH.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/KarlaSSH.png)
 
 Success.
 
@@ -182,17 +182,17 @@ Success.
 
 As we saw the user karla was part of the sudoers group, we immediately check what sudo commands can be run.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Karla sudo.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/Karlasudo.png)
 
 Seems like karla is allowed to run all commands on the system while using sudo.
 <br>
 We can simply just get a bash shell by running the following.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Karla Privsec.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/KarlaPrivsec.png)
 
 ## proof flag
 
 Let's go check the root directory for the loot.
 
-![Desktop-View](/assets/img/pg/funboxeasyenum/Second Flag.png)
+![Desktop-View](/assets/img/pg/funboxeasyenum/SecondFlag.png)
 
