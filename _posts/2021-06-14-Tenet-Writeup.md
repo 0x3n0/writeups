@@ -5,7 +5,7 @@ date: 2021-06-14 14:30pm
 categories: [hackthebox]
 tags: [hackthebox, writeup, tenet]
 math: true
-image: /assets/img/htb/Tenet/00 - tenet infocard.png
+image: /assets/img/htb/Tenet/tenet1.png
 ---
 
 # Reconnaissance
@@ -15,11 +15,11 @@ Let us start with a basic enumeration with nmap.
 ```bash
 sudo nmap -sC -sV
 ```
-![Tenet](/assets/img/htb/Tenet/01 nmap scan.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet2.png)
 
 We go to http://10.10.10.223 and we get a default Apache page.
 
-![Tenet](/assets/img/htb/Tenet/02 apache default page.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet3.png)
 
 We then run feroxbuster web enumeration
 
@@ -29,23 +29,23 @@ feroxbuster --url http://10.10.10.223
 
 We find the following
 
-![Tenet](/assets/img/htb/Tenet/03 feroxbuster results.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet4.png)
 
 We go to http://10.10.10.223/wordpress and find it is running wordpress.
 <br>
 We browse around and If we hover over <b>'Tenet'</b> at the bottom we see a hostname <b>'tenet.htb'</b>
 
-![Tenet](/assets/img/htb/Tenet/04 wordpress hostname.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet5.png)
 
 We add <b>tenet.htb</b> to our hosts file and then browse to http://tenet.htb
 <br>
 Now everything on the site loads properly.
 
-![Tenet](/assets/img/htb/Tenet/05 wordpress site.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet6.png)
 
 After browsing around we find the following comment left by a user.
 
-![Tenet](/assets/img/htb/Tenet/06 neil comment.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet7.png)
 
 Seems like someone might have left a file called <b>sator.php</b> and maybe a backup of it?
 
@@ -56,13 +56,13 @@ I just add <b>sator.php</b> and <b>sator.php.bak</b> into a file called words.tx
 feroxbuster --url http://10.10.10.223 -w words.txt
 ```
 
-![Tenet](/assets/img/htb/Tenet/07 - sator.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet8.png)
 
 <b>Code 200</b> confirms we have an OK success status code.
 
 Browsing to http://10.10.10.223/sator.php we get
 
-![Tenet](/assets/img/htb/Tenet/08 - sator.php.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet9.png)
 
 We then also download the <b>http://10.10.10.223/sator.php.bak</b>  and find the following code.
 
@@ -142,11 +142,11 @@ We start a netcat listener on port 9998
 <br>
 We run the php file.
 
-![Tenet](/assets/img/htb/Tenet/09 - run php.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet10.png)
 
 We get a reverse shell on our netcat.
 
-![Tenet](/assets/img/htb/Tenet/10 - reverse shell.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet11.png)
 
 # User
 
@@ -154,16 +154,16 @@ Seeing that this is a wordpress site the first place I usually go and check for 
 <br>
 Jackpot.
 <br>
-![Tenet](/assets/img/htb/Tenet/11 - wordpress details.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet12.png)
 <br>
 I use those details to ssh into the machine and we have user on the box.
 <br>
 
-![Tenet](/assets/img/htb/Tenet/12 - neil user.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet13.png)
 <br>
 We check and there is the user flag.
 <br>
-![Tenet](/assets/img/htb/Tenet/13 - user flag.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet14.png)
 
 # Privilege Escalation
 
@@ -174,18 +174,18 @@ Let us check the sudoers file.
 Seems we have access to a run a script as sudo.
 <br>
 
-![Tenet](/assets/img/htb/Tenet/14 - sudo.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet15.png)
 
 We look at the script and find this part that is interesting.
 <br>
 We can inject our own ssh key!
 <br>
 
-![Tenet](/assets/img/htb/Tenet/15 - addKey.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet16.png)
 
 We create our own key with <b>ssh-keygen</b>
 
-![Tenet](/assets/img/htb/Tenet/16 - keygen.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet17.png)
 
 We create a <b>while true</b> script called <b>sshkey.sh</b> to put our key in and inject it into a /tmp/ssh-* file which then injects it into the authorized_keys file for the root user.
 <br>
@@ -193,7 +193,7 @@ Create a file sshkey.sh and put your public key in there.
 <br>
 I had named mine moonkey.pub.
 <br>
-![Tenet](/assets/img/htb/Tenet/17 - for script.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet18.png)
 <br>
 Open up another terminal and ssh to the machine as neil.
 <br>
@@ -206,7 +206,7 @@ chmod +x sshkey.sh
 
 Then in the other terminal run
 <br>
-![Tenet](/assets/img/htb/Tenet/18 - script run.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet19.png)
 <br>
 SSH Key has been added to root's authorized_keys file!
 <br>
@@ -216,9 +216,9 @@ Now we try ssh with our key we generated to root.
 ssh -i moonkey root@10.10.10.223
 ```
 
-![Tenet](/assets/img/htb/Tenet/19 - root logged in.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet20.png)
 <br>
 We have root!
 Let's grab the root flag.
 <br>
-![Tenet](/assets/img/htb/Tenet/20 - root flag.png){:.align-center}
+![Tenet](/assets/img/htb/Tenet/tenet21.png)
