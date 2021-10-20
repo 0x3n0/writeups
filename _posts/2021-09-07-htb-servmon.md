@@ -5,6 +5,7 @@ categories: [Hackthebox walkthroughs, Windows, Easy]
 tags: [ftp, NVMS-1000, LFI, crackmapexec, ssh port forwarding, port forwarding, NSClient++, GreatSCT.py, Bypassing Defender, htb-windows-easy, writeup, oscp-prep]
 image: /assets/img/htb/machines/windows/easy/servmon/ServMon.png
 ---
+
 ![ServMon](/assets/img/htb/machines/windows/easy/servmon/ServMon.png)
 
 ServMon is an easy Windows box requiring two exploits. There is a hint in anonymous FTP about the location of the password list. I was able to use the directory traversal bug in the NVMS 1000 web instance that would allow me to leak those passwords, and use one of them over SSH to get the shell. Then I was able to get the local configuration for the NSClient++ web instance running on TCP 8443, and used those credentials plus another exploit to get the SYSTEM shell.
