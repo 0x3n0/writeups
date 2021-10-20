@@ -8,74 +8,74 @@ math: true
 image: /assets/img/htb/Postman/postman_infocard.PNG
 ---
 
-<p>Let's do the normal nmap scan</p>
+Let's do the normal nmap scan
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/1_nmap.PNG" alt="" class="wp-image-57"/></figure>
+![desktop](/assets/img/htb/Postman/1_nmap.PNG)
 
-<p>We have found the following:</p>
+We have found the following:
 
 <ol><li>SSH (port 22)</li><li>HTTP (port 80)</li><li>Redis (port 6379)</li><li>Webmin (10000)</li></ol>
 
-<p>Exploring the website on port 80, I found nothing of interest.</p>
+Exploring the website on port 80, I found nothing of interest.
 
-<p>Let's run gobuster against port 80</p>
+Let's run gobuster against port 80
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/2_gobuster.PNG" alt="" class="wp-image-58"/></figure>
+![desktop](/assets/img/htb/Postman/2_gobuster.PNG)
 
-<p>Browsing to those directories didn't find anything.</p>
+Browsing to those directories didn't find anything.
 
-<p>Webmin (port 10000) needs a username and password and the exploits that are available needs a username and password so for now we will not touch Webmin just yet. So we will focus on Redis (port 6379)</p>
+Webmin (port 10000) needs a username and password and the exploits that are available needs a username and password so for now we will not touch Webmin just yet. So we will focus on Redis (port 6379)
 
-<p>There is an exploit that we can use and we can download the following to exploit Redis</p>
+There is an exploit that we can use and we can download the following to exploit Redis
 
-<p><a href="https://github.com/Avinash-acid/Redis-Server-Exploit">https://github.com/Avinash-acid/Redis-Server-Exploit</a></p>
+<a href="https://github.com/Avinash-acid/Redis-Server-Exploit">https://github.com/Avinash-acid/Redis-Server-Exploit</a>
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/4_github_redis_exploit.PNG" alt="" class="wp-image-60"/></figure>
+![desktop](/assets/img/htb/Postman/4_github_redis_exploit.PNG)
 
-<p>Looking at the code we need to change the following in the script as the default installation of Redis is in /var/lib/redis and the script points to /home/username/</p>
+Looking at the code we need to change the following in the script as the default installation of Redis is in /var/lib/redis and the script points to /home/username/
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/4_redis_change_dir_exploit.PNG" alt="" class="wp-image-61"/></figure>
+![desktop](/assets/img/htb/Postman/4_redis_change_dir_exploit.PNG)
 
-<p>Now we can run the script</p>
+Now we can run the script
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/4_redis_exploit.PNG" alt="" class="wp-image-62"/></figure>
+![desktop](/assets/img/htb/Postman/4_redis_exploit.PNG)
 
-<p>Now we have a reverse shell on the system to the redis user. We still need to esculate to the user on the system.</p>
+Now we have a reverse shell on the system to the redis user. We still need to esculate to the user on the system.
 
-<p>After browsing around for a while, I noticed the following</p>
+After browsing around for a while, I noticed the following
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/5_matt_key.PNG" alt="" class="wp-image-63"/></figure>
+![desktop](/assets/img/htb/Postman/5_matt_key.PNG)
 
-<p>We have a file called id_rsa.bak which is a private ssh key, It seems to be owned by a user called Matt! When I tried to use it to log into ssh with it, it was asking for a password and we do not have the password. John password cracker is able to crack  ssh keys when you throw dictionaries at it. First we need to convert it into a format that John knows about. There is a tool called ssh2john. Just a note, you need the jumbo version of John for this.</p>
+We have a file called id_rsa.bak which is a private ssh key, It seems to be owned by a user called Matt! When I tried to use it to log into ssh with it, it was asking for a password and we do not have the password. John password cracker is able to crack  ssh keys when you throw dictionaries at it. First we need to convert it into a format that John knows about. There is a tool called ssh2john. Just a note, you need the jumbo version of John for this.
 
-<p></p>
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/6_matt_sshkey_decrypt.PNG" alt="" class="wp-image-64"/></figure>
 
-<p>Now that we have it in the correct format, we can now try bruteforce the key with John.</p>
+![desktop](/assets/img/htb/Postman/6_matt_sshkey_decrypt.PNG)
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/7_matt_sshkey_passwd.PNG" alt="" class="wp-image-65"/></figure>
+Now that we have it in the correct format, we can now try bruteforce the key with John.
 
-<p>Low and behold, we have Matt's private ssh key password?</p>
+![desktop](/assets/img/htb/Postman/7_matt_sshkey_passwd.PNG)
 
-<p>Now we can use the original file to login to ssh with.</p>
+Low and behold, we have Matt's private ssh key password?
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/8_matt_ssh_fail.PNG" alt="" class="wp-image-66"/></figure>
+Now we can use the original file to login to ssh with.
 
-<p>Wait what?? Let's see what happens when we just so a su - Matt when we are logged in with the Redis user.</p>
+![desktop](/assets/img/htb/Postman/8_matt_ssh_fail.PNG)
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/9_matt_ssh_user_flag.PNG" alt="" class="wp-image-105"/></figure>
+Wait what?? Let's see what happens when we just so a su - Matt when we are logged in with the Redis user.
 
-<p>user flag achieved! </p>
+![desktop](/assets/img/htb/Postman/9_matt_ssh_user_flag.PNG)>
 
-<p>Remember how I said earlier that we needed a username and password to use a certain exploit for Webmin? Well, here goes nothing.</p>
+user flag achieved! 
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/10_metasploit.PNG" alt="" class="wp-image-68"/></figure>
+Remember how I said earlier that we needed a username and password to use a certain exploit for Webmin? Well, here goes nothing.
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/11_exploit_options.PNG" alt="" class="wp-image-69"/></figure>
+![desktop](/assets/img/htb/Postman/10_metasploit.PNG)
 
-<p>then we just run exploit</p>
+![desktop](/assets/img/htb/Postman/11_exploit_options.PNG)
 
-<figure class="wp-block-image size-large"><img src="/assets/img/htb/Postman/11_root_flag.PNG" alt="" class="wp-image-106"/></figure>
+then we just run exploit
 
-<p>Well hello there root flag!</p>
+![desktop](/assets/img/htb/Postman/11_root_flag.PNG)>
+
+Well hello there root flag!
