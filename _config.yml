@@ -6,14 +6,11 @@ lang: en
 
 timezone: Asia/Jakarta
 
-
 title: root
 
 tagline: The future belongs to those who prepare for today 
 
 description: >-
-
-
 
 url: 'https://blog.linuxhacking.ac.id'
 
@@ -21,7 +18,7 @@ github:
   username:
 
 twitter:
-  username:
+  username: idsec_
 
 social:
 
