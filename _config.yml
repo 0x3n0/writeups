@@ -60,7 +60,7 @@ valine:
   placeholder: Your Comments.
   avatar: wavatar
 
-paginate: 15
+paginate: 7
 
 # ------------ The following options are not recommended to be modified ------------------
 
