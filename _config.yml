@@ -87,7 +87,7 @@ defaults:
       layout: post
       comments: true
       toc: true
-      autoads: false
+      autoads: true
       permalink: /:title/
   -
     scope:
