@@ -1,14 +1,30 @@
 ---
 title: HackTheBox - Grandpa
-date: 2021-08-14 00:34:46 +0100
+date: 2021-10-23 00:34:46 +0700
+description: Writeups of only retired HTB machines are allowed. The machine in this article, named Grandpa, is retired.
 categories: [Hackthebox walkthroughs, Windows, Easy]
 tags: [Microsoft IIS, WebDav, davtest, metasploit, meterpreter, suggester, MS14-070, htb-windows-easy, writeup, oscp-prep]
 image: /assets/img/htb/machines/windows/easy/grandpa/Grandpa.png
 ---
 
+`HTB` is an excellent platform that hosts machines belonging to multiple OS. It also has some other challenges as well. Individuals have to solve the puzzle (simple enumeration plus pentest) in order to log into the platform and download the VPN pack to connect to the machines hosted on the HTB platform.
+
+Today we are going to solve another `CTF challenge` <kbd>Grandpa</kbd> which is lab presented by Hack the Box for making online penetration practices according to your experience level. They have a collection of vulnerable labs as challenges from beginners to Expert level. HTB has two partitions of lab i.e. Active and retired since we can’t submit write up of any Active lab, therefore, we have chosen retried Grandpa Lab.
+
 ## Enumeration
 
-### `nmap` scan
+As usual, we'll start by running the AutoRecon recon tool by <kbd>Tib3rius</kbd> on Grandpa. I highly recommend this tool to save time on CTF exams and practice. Navigate to the folder you downloaded and run the python script with our target IP. We will then go into our folder with the scan results completed and see the output of Nmap where we can start formulating theory for our exploit phase.
+
+```bash
+cd AutoRecon
+./autorecon.py 10.10.10.14
+
+cd AutoRecon/results/10.10.10.14/scans
+```
+
+If you wish to scan Grandpa without `AutoRecon`, I would recommend the below nmap scan which will achieve the same results without the subscripts.
+
+### nmap scan
 
 The only open port is port 80, running **Microsoft IIS 6.0**
 
@@ -33,7 +49,7 @@ PORT   STATE SERVICE VERSION
 Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
 ```
 
-I decided to perform an agressive scan and look for vulnerabilities with `nmap`:
+I decided to perform an agressive scan and look for vulnerabilities with <kbd>nmap</kbd>`:
 
 ```bash
 $ nmap -vvv --script vuln -oN vuln-scan.txt 10.10.10.14
@@ -67,7 +83,9 @@ PORT   STATE SERVICE REASON
 
 ![Desktop View](/assets/img/htb/machines/windows/easy/grandpa/IIS_Versions.png)
 
-#### `gobuster`
+#### gobuster
+
+Gobuster is a tool used to brute-force `URI` including directories and files as well as DNS.
 
 ```bash
 $ gobuster dir -u http://10.10.10.14 -w /usr/share/wordlists/seclists/Discovery/Web-Content/co
@@ -89,7 +107,7 @@ mmon.txt -x .txt -o services/80-http.txt
 ===============================================================
 ```
 
-#### `nikto`
+#### nikto
 
 ```bash
 $ nikto -h $TARGET -output services/80-nikto.txt
@@ -98,7 +116,7 @@ $ nikto -h $TARGET -output services/80-nikto.txt
 + Target IP:          10.10.10.14
 + Target Hostname:    10.10.10.14
 + Target Port:        80
-+ Start Time:         2021-08-13 22:11:52 (GMT2)
++ Start Time:         2021-10-23 22:11:52 (GMT2)
 ---------------------------------------------------------------------------
 + Server: Microsoft-IIS/6.0
 + Retrieved microsoftofficewebserver header: 5.0_Pub
@@ -130,14 +148,14 @@ $ nikto -h $TARGET -output services/80-nikto.txt
 + OSVDB-67: /_vti_bin/shtml.dll/_vti_rpc: The anonymous FrontPage user is revealed through a crafted POST.
 /_vti_bin/_vti_adm/admin.dll: FrontPage/SharePoint file found.
 + 8015 requests: 0 error(s) and 27 item(s) reported on remote host
-+ End Time:           2021-08-13 22:28:53 (GMT2) (1021 seconds)
++ End Time:           2021-10-23 22:28:53 (GMT2) (1021 seconds)
 ---------------------------------------------------------------------------
 + 1 host(s) tested
 ```
 
-#### `davtest`
+#### davtest
 
-We saw earlier from the `nmap` scan that the target server is using the **WebDav** protocol and **HTTP PUT** method is allowed. This could potentially give us the ability to upload files.
+We saw earlier from the <kbd>nmap</kbd> scan that the target server is using the **WebDav** protocol and **HTTP PUT** method is allowed. This could potentially give us the ability to upload files.
 
 We can check that with `davtest`:
 
