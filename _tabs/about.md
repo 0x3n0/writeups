@@ -24,101 +24,64 @@ Broken or exposed APIs are behind most of the data breaches. They expose sensiti
 
 Building an Proper Access control Model is hard, The consequences of a flawed access control scheme can be devastating. In addition to viewing unauthorized content, an attacker might be able to change or delete content, perform unauthorized functions, or even take over site administration. We make sure to test your Access control for all kind of escalations that are possible, Plus out team uses their specially crafted (Forward | Backward) Approached to test your Access control Model.
 
-### What are we best at ?
+### FREQUENTLY ASKED QUESTIONS
 
-We would like to be honest with our customers and provide them an clear analytics of what are we good at based on data that we have collected with previous customers.
+- What is Pentesting?
 
+A pentest is a security audit, a penetration test or an intrusion test to a computer system with the aim of verifying that there are no security breaches through which cybercriminals can “enter” the systems.
 
-    <section id="skills" class="skills">
-      <div class="container" data-aos="fade-up">
+- Why should i do pentesting?
 
-        <div class="row">
-          <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-            <img src="assets/img/skills.png" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-            <h3>What are we best at ?</h3>
-            <p class="font-italic">
-              We would like to be honest with our customers and provide them an clear analytics of what are we good at based on data that we have collected with previous customers.
-            </p>
+Because you may be a victim of a cyber attack right now without even knowing it. Because you may be a victim in the future without being ready for it. Because you can avoid thousands of euros in losses in your company. Because prevention is always better than cure.
 
-            <div class="skills-content">
+- What are the benefits of pentesting my business ?
 
-              <div class="progress">
-                <span class="skill">Web Application Secrity Assesments <i class="val">100%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+The benefits of performing a pentest are multiple:
 
-              <div class="progress">
-                <span class="skill">API Security Testing. <i class="val">90%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+  - Discovery of vulnerabilities in your systems
+  - Knowledge on the way those vulnerabilities can be exploited
+  - Information on the risks that they carry
+  - Solutions to solve every one of those vulnerabilities
+  - Greater protection for the infrastructure of your business
+  - Higher security standards when accessing your company’s resources
+  - Preservation of the data’s confidentiality
+  - Control against unauthorised access and improper use of your data
+  - Protection against the loss and leaking of sensitive information 
+  - Prevention against any intruder that would tamper with your network
+  - Conservation of data discretion
 
-              <div class="progress">
-                <span class="skill">Access Control Testing. <i class="val">100%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+- What type of box (black / grey / white) is best suited to my business?
 
-              <div class="progress">
-                <span class="skill">Android/IOS Security. <i class="val">50%</i></span>
-                <div class="progress-bar-wrap">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+The 3 types of audits are suitable FOR ANY kind of BUSINESS. Although, at Open Data Security we will give you personalized advice for you to make the decision that best suits the needs of your business. Do not hesitate to contact us
 
-            </div>
+- What resources / accesses do you need to carry out the pentesting?
 
-          </div>
-        </div>
+It will depend on the type of audit that is carried out since these are simulations of real attacks so, in some cases, we will not even need access data of any kind. For more information do not hesitate to Contact-Us.
 
-      </div>
-    </section>
-    
-  
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
+- How long does it take to perform a pentest?
 
-        <div class="section-title">
-          <h2>THE BENEFITS OF CHOOSING US ?</h2>
-          <p></p>
-        </div>
+The estimation of the time required to carry out a security audit will depend on each case. Do not hesitate to contact us for more information
 
-   <div class="row">
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxs-coin-stack"></i></div>
-              <h4>Affordable services.</h4>
-            </div>
-          </div>
+- Once the problem / security gap is located, how long would it take to fix it?
 
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-check-shield"></i></div>
-              <h4>We Will Make Sure to Test For All Latest Security Vulnerabilities.</h4>
-            </div>
-          </div>
+The estimation of the time required to solve a security failure will depend on the type and the severity of the breach.
 
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-face"></i></div>
-              <h4>Several Types of Security Sepecialist Will Be Testing Your Systems.</h4>
-            </div>
-          </div>
+- I have a small business, should I do a pentest too?
 
-          <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxs-help-circle"></i></div>
-              <h4>We Will Help You to Resolve Every One Of Those Vulnerabilites</h4>
-            </div>
-          </div>
+If you use any type of access system, either to an internal or external network, and if you manage data that should be kept private, it is always advisable to conduct a pentest. Any system is vulnerable to cyber attacks and can be a target for Cyber Criminals.
 
-        </div>
+- How often should I do a pentest?
 
-      </div>
-    </section><!-- End Services Section -->
+It is advisable to perform a security audit every time any software or application is updated and, at least, once a year.
+
+- How do I send you the accesses / resources you need to carry out the pentesting?
+
+The access and resources will be sent confidentially through a secure way, always respecting the privacy of your data.
+
+- Once the problem is solved, am I protected against future threats?
+
+Every day new updates appear in the systems, changing the security parameters of their infrastructures which can generate new security breaches. At Open Data Security we recommend you to keep certain security protocols to avoid it and to always have on your side cybersecurity experts who guarantee the security of your company at all times. On the other hand, we must bear in mind that cybercriminals also use social engineering to gain access to your systems, and it is something that does not depend solely on the level of security of your infrastructures.
+
+- I already made a pentest in the past, is it necessary to do it again?
+
+Of course. Every time you perform an update on your systems you should check that they are still safe. Also, if the last time you did a penetration test was more than a year ago, you should perform another one again.
