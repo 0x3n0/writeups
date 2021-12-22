@@ -22,10 +22,10 @@ twitter:
 
 social:
 
-  name: Enogembok
-  email: eno@itsec.ac.id
+  name: 0x3n0
+  email: 
   links:
-    - https://twitter.com/Enogembok
+    - https://twitter.com/0x3n0
     - https://github.com/
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -37,7 +37,7 @@ google_site_verification:
 
 
 google_analytics:
-  id: 'G-CF9VBBH1LK'
+  id: ''
   pv:
     proxy_endpoint:
     cache_path:
