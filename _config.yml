@@ -1,6 +1,6 @@
 theme: jekyll-theme-chirpy
 
-baseurl: '/writeups'
+baseurl: ''
 
 lang: en
 
