@@ -1,5 +1,5 @@
 ---
-title: root@3n0
+title: whoami
 icon: fas fa-info-circle
 order: 4
 ---
