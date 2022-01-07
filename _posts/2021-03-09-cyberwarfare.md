@@ -73,6 +73,4 @@ ___
 - [**Le monde en cartes**: Espionnage, sabotage… Géopolitique dans le cyberespace](https://www.youtube.com/watch?v=cc989ta0MMs)
 - [**Arte** (Le Dessous des cartes): Le cyber, nouvel espace géopolitique](https://www.youtube.com/watch?v=y48XMmv3rj8)
 
-
-<div class="badge-base LI-profile-badge" data-locale="in_ID" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="0x3n0" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://id.linkedin.com/in/0x3n0?trk=profile-badge">Eno -</a></div>
               
