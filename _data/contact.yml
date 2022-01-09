@@ -13,10 +13,10 @@
   icon: 'fab fa-linkedin'
   url: 'https://www.linkedin.com/in/0x3n0'
 
--
-  type: telegram
-  icon: 'fab fa-telegram'
-  url: 'https://t.me/'
+# -
+#  type: telegram
+#  icon: 'fab fa-telegram'
+#  url: 'https://t.me/'
 
 -
   type: instagram
