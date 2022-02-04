@@ -4,7 +4,6 @@ date: 2021-03-09 23:38:36 +0100
 categories: [Articles]
 tags: [article, cyberwarfare]
 image: /assets/img/articles/cyberweapons-mankind-consequences/thumbnail.png
-pin: true
 ---
 
 > _I wrote this article in 2018 as part of an assignment in English for my studies. Please forgive my mistakes (if there is any)._
