@@ -8,7 +8,7 @@ I'm an Information Security Enthusiast, And want to be a Red Teamer. I have been
 
 ## Experience
 
-#### ITSEC - IT Consultant 
+#### Synack - IT Consultant 
 
 Consultant for IT consulting company specializing in Security.
 Provide services to customers to fullfill all IT needs.
