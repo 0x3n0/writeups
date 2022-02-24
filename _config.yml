@@ -8,7 +8,7 @@ timezone: Asia/Jakarta
 
 title: 0x3n0
 
-tagline: Security Researcher | Penetration Tester 
+tagline: Researcher | Pentester 
 
 description: >-
 
@@ -18,7 +18,7 @@ github:
   username:
 
 twitter:
-  username: idsec_
+  username: 0x3n0
 
 social:
 
@@ -28,7 +28,7 @@ social:
     - https://twitter.com/0x3n0
     - https://github.com/
     # Uncomment below to add more social links
-    # - https://www.facebook.com/username
+    - https://app.hackthebox.com/profile/381523
     # - https://www.linkedin.com/in/username
 
 google_site_verification:
