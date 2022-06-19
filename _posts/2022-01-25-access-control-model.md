@@ -1,7 +1,7 @@
 ---
 title: Teknik mengamankan Web dengan Access Control Model
 author: Eno
-date: 2022-10-25 00:00:00 +0700
+date: 2022-01-25 00:00:00 +0700
 categories: [Blogging, Tutorial, Teknik Menyerang web aplikasi]
 image: /assets/img/Access-Control-Model/Ascend_Media.gif
 tags: [Access Control Models, Broken Access Control Model, Testing Broken Access control Models, Web Applications, users, Documents, logs, Reports]
