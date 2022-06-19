@@ -1,13 +1,13 @@
 ---
 title: Teknik mengamankan Web dengan Access Control Model
 author: Eno
-date: 2021-10-25 00:00:00 +0700
+date: 2022-10-25 00:00:00 +0700
 categories: [Blogging, Tutorial, Teknik Menyerang web aplikasi]
 image: /assets/img/Access-Control-Model/Ascend_Media.gif
 tags: [Access Control Models, Broken Access Control Model, Testing Broken Access control Models, Web Applications, users, Documents, logs, Reports]
 ---
 
-<a href="https://twitter.com/Enogembok?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @Enogembok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/0x3n0?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @Enogembok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Sejauh ini kamu mungkin telah menemukan berbagai web aplikasi di mana kamu dapat mengundang anggota dengan akses terbatas ke informasi dalam organisasi. developer dapat membuat aplikasi atau layanan tersebut dengan menerapkan Access Control Model dalam aplikasi mereka.
 
@@ -126,8 +126,8 @@ Dalam hal ini, titik API harus memiliki penunjuk yang dapat berupa nama, id, ata
 
 Saya harap bisa membantu. Jika kamu memiliki pertanyaan, saran, atau permintaan, silakan hubungi kami melalui 
   
-[support@itsec.ac.id](mailto:support@itsec.ac.id)
+[0x@3n0.us](mailto:0x@3n0.us)
 
 See you next time.
     
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">the type of vulnerability that affects most application and system APIs.<a href="https://t.co/euZDmAkTqI">https://t.co/euZDmAkTqI</a></p>&mdash; Eno  (@idsec_) <a href="https://twitter.com/idsec_/status/1441313920111693830?ref_src=twsrc%5Etfw">September 24, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
