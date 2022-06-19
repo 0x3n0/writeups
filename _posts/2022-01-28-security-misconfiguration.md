@@ -1,7 +1,7 @@
 ---
 title: OWASP API Security Misconfiguration
 author: Eno
-date: 2022-07-28 00:00:00 +0700
+date: 2022-01-28 00:00:00 +0700
 image: /assets/img/blogging/Security-Misconfiguration.jpeg
 description: security misconfiguration error, ancaman konstan terhadap implementasi API.
 categories: [Blogging, Tutorial, Security Misconfiguration]
