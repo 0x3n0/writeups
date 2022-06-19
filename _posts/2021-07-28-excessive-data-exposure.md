@@ -1,7 +1,7 @@
 ---
 title: OWASP API Security Excessive Data Exposure
 author: Eno
-date: 2021-07-28 00:00:00 +0000
+date: 2022-07-28 00:00:00 +0000
 image: /assets/img/blogging/owasp.jpg
 categories: [Blogging, Tutorial, Excessive Data Exposure]
 tags: [OWASP API, OWASP API Security Top 10, post, get, put, delete, server API, CLient API, Grapql API, Excessive Data Exposure, API Security]
