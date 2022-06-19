@@ -1,7 +1,7 @@
 ---
 title: OWASP API Security Mass Assignment
 author: Eno
-date: 2022-01-28 00:00:00 +0700
+date: 2022-02-02 00:00:00 +0700
 image: /assets/img/blogging/Mass-Assignment.jpg
 categories: [Blogging, Tutorial, Mass Assignment]
 tags: [OWASP API, OWASP API Security Top 10, post, get, put, delete, server API, CLient API, Graphql API, jwt, Broken User Authentication, OWASP API Security, Mass Assignment]
