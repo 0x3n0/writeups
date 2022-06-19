@@ -1,7 +1,7 @@
 ---
 title: OWASP API Security Injection
 author: Eno
-date: 2022-01-28 00:00:00 +0700
+date: 2022-02-07 00:00:00 +0700
 image: /assets/img/blogging/Injection.jpg
 categories: [Blogging, Tutorial, Injection]
 tags: [OWASP API, OWASP API Security Top 10, post, get, put, delete, server API, CLient API, Graphql API, jwt, SQL, Encode, parse, OWASP API Security, Injection]
