@@ -1,7 +1,7 @@
 ---
 title: Mengenal Email Security
 author: Eno
-date: 2021-10-14 00:00:00 +0700
+date: 2022-10-14 00:00:00 +0700
 image: /assets/img/blogging/Email_security.jpg
 categories: [Blogging, Tutorial, Email security]
 tags: [Email, 2FA metadata, Protect, header, encrypt, private key, private key, PGP, session key]
