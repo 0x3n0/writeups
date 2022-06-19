@@ -1,7 +1,7 @@
 ---
 title: OWASP API Security Broken Function Level Authorization
 author: Eno
-date: 2022-01-28 00:00:00 +0700
+date: 2022-01-30 00:00:00 +0700
 image: /assets/img/blogging/Function-Level-Authorization.jpg
 categories: [Blogging, Tutorial, Broken Function Level Authorization]
 tags: [OWASP API, OWASP API Security Top 10, post, get, put, delete, Broken Function Level Authorization, OWASP API Security]
