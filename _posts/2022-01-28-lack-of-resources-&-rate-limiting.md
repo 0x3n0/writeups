@@ -1,7 +1,7 @@
 ---
 title: OWASP API Security Lack of Resources & Rate Limiting
 author: Eno
-date: 2022-07-28 00:00:00 +0700
+date: 2022-01-28 00:00:00 +0700
 image: /assets/img/blogging/Lack-of-Resources-&-Rate-Limiting.jpg
 categories: [Blogging, Tutorial, Lack of Resources & Rate Limiting]
 tags: [OWASP API, OWASP API Security Top 10, post, get, put, delete, server API, CLient API, Grapql API, jwt, Broken User Authentication, Lack of Resources & Rate Limiting, OWASP API Security]
